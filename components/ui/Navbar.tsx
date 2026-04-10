@@ -25,9 +25,14 @@ export function Navbar() {
             <Link href="/tpo" className="hover:text-[#c9e8ff] transition-colors">TPO Dashboard</Link>
             <Link href="/recruiter" className="hover:text-[#b8baff] transition-colors">Recruiters</Link>
             <Link href="/alumni" className="hover:text-[#6666ff] transition-colors">Alumni</Link>
-            <Link href="#features" className="px-4 py-2 rounded-full bg-[#6666ff] text-white hover:bg-[#b8baff] hover:text-[#0c0c16] transition-all">
-              Join Waitlist
-            </Link>
+            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-white/10">
+              <Link href="/auth/login" className="hover:text-[#6666ff] transition-colors">
+                Login
+              </Link>
+              <Link href="/auth/signup" className="px-5 py-2 rounded-full bg-[#6666ff] text-white hover:bg-[#b8baff] hover:text-[#0c0c16] font-bold shadow-[0_0_15px_rgba(102,102,255,0.3)] hover:shadow-[0_0_20px_rgba(102,102,255,0.5)] transition-all">
+                Get Started
+              </Link>
+            </div>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -51,6 +56,14 @@ export function Navbar() {
             <Link href="/tpo" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#c9e8ff]">TPOs</Link>
             <Link href="/recruiter" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#b8baff]">Recruiters</Link>
             <Link href="/alumni" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#6666ff]">Alumni</Link>
+            <div className="pt-4 space-y-2 border-t border-white/10 mt-2">
+              <Link href="/auth/login" className="block px-3 py-3 rounded-xl text-center font-bold text-[#ededed] border border-white/10 hover:bg-white/5 transition-all">
+                Login
+              </Link>
+              <Link href="/auth/signup" className="block px-3 py-3 rounded-xl text-center font-bold text-white bg-[#6666ff] hover:bg-[#b8baff] transition-all">
+                Get Started
+              </Link>
+            </div>
           </div>
         </motion.div>
       )}
