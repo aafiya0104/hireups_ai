@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BookOpen, Code, FileText, Trophy, Target, Search } from "lucide-react";
+import { BookOpen, Code, FileText, Trophy, Target, Search, Map, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const DashboardCard = ({ title, icon: Icon, color, delay, children }: any) => (
@@ -37,23 +37,50 @@ export default function StudentDashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         
-        {/* AI Learning Roadmap */}
-        <DashboardCard title="AI Roadmap" icon={BookOpen} color="[#6666ff]" delay={0.1}>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center text-sm font-sans">
-              <span className="text-gray-400">Current Track: <strong className="text-white">Full-Stack dev</strong></span>
-              <span className="text-[#6666ff]">Day 14/90</span>
+        {/* AI Learning Roadmap — full feature entry */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-gradient-to-br from-[#6666ff]/10 to-[#b8baff]/5 border border-[#6666ff]/20 rounded-2xl p-6 relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-40 h-40 bg-[#6666ff] rounded-full blur-[80px] opacity-10 pointer-events-none" />
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-3 rounded-lg bg-[#6666ff]/10 text-[#6666ff]">
+              <Map size={24} />
             </div>
-            <div className="w-full bg-white/5 rounded-full h-2">
-              <div className="bg-[#6666ff] h-2 rounded-full" style={{ width: '15%' }}></div>
-            </div>
-            <div className="bg-white/5 p-4 rounded-xl border border-white/5 mt-4">
-              <h4 className="font-bold mb-1 font-sans">Today's Micro-Task</h4>
-              <p className="text-sm text-gray-400 font-sans">Complete Advanced React Patterns (Hooks deeply).</p>
-              <button className="mt-3 w-full py-2 bg-[#6666ff]/20 text-[#c9e8ff] rounded-lg text-sm font-semibold hover:bg-[#6666ff]/30 transition-colors">Start Day 14</button>
+            <div>
+              <h2 className="text-xl font-heading font-bold">AI Learning Roadmap</h2>
+              <p className="text-xs text-zinc-400">Week 3 of 12 · Trees &amp; Recursion</p>
             </div>
           </div>
-        </DashboardCard>
+          <div className="flex items-center justify-between text-xs mb-3">
+            <span className="text-zinc-400">Day 18 of 90</span>
+            <span className="text-[#b9f0d7] font-bold bg-[#b9f0d7]/10 px-2 py-0.5 rounded-full border border-[#b9f0d7]/20">On track ✓</span>
+          </div>
+          <div className="w-full bg-white/5 rounded-full h-2 mb-4">
+            <div className="bg-gradient-to-r from-[#6666ff] to-[#b8baff] h-2 rounded-full" style={{ width: '20%' }} />
+          </div>
+          <div className="bg-black/30 p-3 rounded-xl border border-white/5 mb-4">
+            <p className="text-[10px] uppercase tracking-wider text-zinc-500 mb-1">Today</p>
+            <p className="text-sm font-semibold text-white">Binary Search Trees + OS Scheduling</p>
+            <div className="flex gap-2 mt-2">
+              <span className="text-[10px] bg-[#6666ff]/20 text-[#b8baff] px-2 py-0.5 rounded">DSA</span>
+              <span className="text-[10px] bg-[#b9f0d7]/10 text-[#b9f0d7] px-2 py-0.5 rounded">OS</span>
+              <span className="text-[10px] text-zinc-500">~90 min</span>
+            </div>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-xl">🔥</span>
+              <span className="font-bold text-white">7</span>
+              <span className="text-zinc-400 text-xs">day streak</span>
+            </div>
+            <Link href="/student/roadmap" className="flex items-center gap-1.5 px-4 py-2 bg-[#6666ff] text-white text-sm font-bold rounded-lg hover:bg-[#b8baff] hover:text-zinc-900 transition-all">
+              Open Roadmap <ArrowRight size={14} />
+            </Link>
+          </div>
+        </motion.div>
 
         {/* DSA Mastery Tracker */}
         <DashboardCard title="DSA Mastery" icon={Code} color="[#b9f0d7]" delay={0.2}>

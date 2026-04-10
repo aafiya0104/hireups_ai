@@ -40,3 +40,42 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #6666ff; 
 }
+
+/* Font variable token bridges for Tailwind */
+:root {
+  --font-sans: var(--font-dm-sans), "DM Sans", Arial, Helvetica, sans-serif;
+  --font-heading: var(--font-syne), "Syne", Arial, Helvetica, sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Focus mode dark override */
+.focus-bg {
+  background: #060610;
+}
+
+/* Checkmark ripple */
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.ripple-check::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #b9f0d7;
+  animation: ripple 0.5s ease-out;
+  pointer-events: none;
+}
+
+/* Smooth accent-color for range inputs */
+input[type="range"] {
+  accent-color: #6666ff;
+}
+
