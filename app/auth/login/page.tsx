@@ -3,12 +3,25 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { Mail, Lock, Eye, EyeOff, Terminal, Globe, ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Mail, Lock, Eye, EyeOff, Terminal, Globe, ArrowRight, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    router.push("/student");
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -39,11 +52,11 @@ export default function LoginPage() {
 
       {/* Social Login */}
       <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 mb-8">
-        <button className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 transition-all group">
+        <button onClick={handleLogin} className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 transition-all group">
           <Terminal className="w-5 h-5 text-white" />
           <span className="text-sm font-semibold text-white">GitHub</span>
         </button>
-        <button className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 transition-all group">
+        <button onClick={handleLogin} className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 hover:border-white/10 transition-all group">
           <Globe className="w-5 h-5 text-white" />
           <span className="text-sm font-semibold text-white">Google</span>
         </button>
@@ -56,7 +69,7 @@ export default function LoginPage() {
         <span className="relative px-4 text-xs uppercase tracking-widest text-zinc-500 bg-[#0c0c16]/50">Or continue with</span>
       </motion.div>
 
-      <form className="space-y-5">
+      <form onSubmit={handleLogin} className="space-y-5">
         <motion.div variants={itemVariants} className="space-y-2">
           <label className="text-sm font-bold text-zinc-300 ml-1">Email Address</label>
           <div className="relative group">
@@ -98,9 +111,14 @@ export default function LoginPage() {
         <motion.div variants={itemVariants} className="pt-2">
           <button 
             type="submit"
-            className="w-full bg-[#6666ff] hover:bg-[#b8baff] text-white hover:text-[#0c0c16] font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(102,102,255,0.2)] hover:shadow-[0_0_20px_rgba(102,102,255,0.4)]"
+            disabled={isLoading}
+            className="w-full bg-[#6666ff] hover:bg-[#b8baff] text-white hover:text-[#0c0c16] font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-2 group shadow-[0_0_20px_rgba(102,102,255,0.2)] hover:shadow-[0_0_20px_rgba(102,102,255,0.4)] disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            Sign In <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            {isLoading ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : (
+              <>Sign In <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" /></>
+            )}
           </button>
         </motion.div>
       </form>

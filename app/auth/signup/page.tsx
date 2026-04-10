@@ -3,10 +3,27 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-import { Mail, Lock, User, GraduationCap, Terminal, Globe, Check } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Mail, Lock, User, GraduationCap, Terminal, Globe, Check, Loader2 } from "lucide-react";
 
 export default function SignupPage() {
   const [agreed, setAgreed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!agreed) {
+      alert("Please agree to the Terms and Privacy Policy.");
+      return;
+    }
+    setIsLoading(true);
+    
+    // Simulate API delay
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    router.push("/student/roadmap/onboarding");
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,11 +54,11 @@ export default function SignupPage() {
 
       {/* Social Register */}
       <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 mb-6">
-        <button className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all">
+        <button onClick={handleSignup} className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all">
           <Terminal className="w-5 h-5 text-white" />
           <span className="text-sm font-semibold text-white">GitHub</span>
         </button>
-        <button className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all">
+        <button onClick={handleSignup} className="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all">
           <Globe className="w-5 h-5 text-white" />
           <span className="text-sm font-semibold text-white">Google</span>
         </button>
@@ -54,7 +71,7 @@ export default function SignupPage() {
         <span className="relative px-4 text-xs uppercase tracking-widest text-zinc-500 bg-[#0c0c16]/50">Or use email</span>
       </motion.div>
 
-      <form className="space-y-4">
+      <form onSubmit={handleSignup} className="space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <motion.div variants={itemVariants} className="space-y-2">
             <label className="text-xs font-bold text-zinc-400 ml-1">Full Name</label>
@@ -120,9 +137,14 @@ export default function SignupPage() {
         <motion.div variants={itemVariants} className="pt-2">
           <button 
             type="submit"
-            className="w-full bg-white text-[#0c0c16] hover:bg-[#b8baff] font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+            disabled={isLoading}
+            className="w-full bg-white text-[#0c0c16] hover:bg-[#b8baff] font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
           >
-            Create My Account
+            {isLoading ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : (
+              "Create My Account"
+            )}
           </button>
         </motion.div>
       </form>
