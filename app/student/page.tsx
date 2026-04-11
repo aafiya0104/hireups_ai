@@ -116,8 +116,12 @@ export default function StudentDashboard() {
               <p className="text-xs text-gray-400">Starts in 2h 45m • 5,432 enrolled</p>
             </div>
             <div className="flex gap-2">
-               <button className="flex-1 py-2 bg-[#c9e8ff]/10 text-[#c9e8ff] rounded-lg text-sm font-semibold hover:bg-[#c9e8ff]/20 transition-colors">Join Arena</button>
-               <button className="flex-1 py-2 border border-white/10 text-white rounded-lg text-sm font-semibold hover:bg-white/5 transition-colors">Leaderboard</button>
+               <Link href="/arena" className="flex-1 py-2 bg-[#c9e8ff]/10 text-[#c9e8ff] rounded-lg text-sm font-semibold hover:bg-[#c9e8ff]/20 transition-colors text-center">
+                 Join Arena
+               </Link>
+               <Link href="/arena/leaderboard" className="flex-1 py-2 border border-white/10 text-white rounded-lg text-sm font-semibold hover:bg-white/5 transition-colors text-center">
+                 Leaderboard
+               </Link>
             </div>
           </div>
         </DashboardCard>
