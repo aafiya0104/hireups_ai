@@ -1,14 +1,8 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Code, Map, GraduationCap, Users, LayoutDashboard, BrainCircuit, Rocket } from "lucide-react";
 
 const FeatureCard = ({ title, desc, icon: Icon, colorClass, link, glowColor }: any) => (
-  <motion.div
-    whileHover={{ y: -10 }}
-    className="p-6 rounded-2xl border border-white/5 bg-[#0c0c16] hover:bg-zinc-900/50 transition-all overflow-hidden relative group shadow-lg"
-  >
+  <div className="p-6 rounded-2xl border border-white/5 bg-[#0c0c16] hover:bg-zinc-900/50 transition-all overflow-hidden relative group shadow-lg hover:-translate-y-2">
     <div className={`absolute -top-10 -right-10 w-40 h-40 ${glowColor} rounded-full blur-3xl opacity-0 group-hover:opacity-15 transition-opacity duration-500`} />
     <div className="relative z-10">
       <Icon className={`w-10 h-10 mb-6 ${colorClass} drop-shadow-md`} />
@@ -18,7 +12,7 @@ const FeatureCard = ({ title, desc, icon: Icon, colorClass, link, glowColor }: a
         Explore Dashboard <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
       </Link>
     </div>
-  </motion.div>
+  </div>
 );
 
 export default function Home() {
@@ -32,39 +26,26 @@ export default function Home() {
         <div className="absolute top-1/3 right-1/4 w-[28rem] h-[28rem] bg-[#b9f0d7] rounded-full blur-[150px] opacity-[0.08]" />
 
         <div className="relative max-w-4xl mx-auto text-center z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="animate-[fade-in_0.7s_ease-out_both]">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 text-zinc-300 text-sm font-medium border border-white/10 mb-8 backdrop-blur-sm shadow-xl">
               <Rocket size={16} className="text-[#b9f0d7]" /> Welcome to the future of college placements
             </span>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
+          </div>
+
+          <h1 
             className="text-5xl md:text-7xl font-heading font-bold tracking-tight mb-8 text-white leading-tight"
           >
             Bridge the Gap to <br/>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6666ff] via-[#b8baff] to-[#b9f0d7]">Top Tech Placements</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <p 
             className="text-xl text-zinc-400 font-sans max-w-2xl mx-auto mb-10 leading-relaxed"
           >
             The all-in-one AI OS designed for students to prepare, TPOs to orchestrate, and recruiters to discover exceptional talent.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+          </p>
+
+          <div 
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link href="/student" className="px-8 py-4 rounded-xl bg-zinc-100 text-zinc-900 font-bold font-sans hover:bg-white hover:scale-105 transition-all shadow-lg">
@@ -73,7 +54,7 @@ export default function Home() {
             <Link href="/tpo/dashboard" className="px-8 py-4 rounded-xl border border-white/10 text-zinc-300 font-bold font-sans hover:bg-white/5 hover:text-white transition-all backdrop-blur-sm">
               Explore TPO Tools
             </Link>
-          </motion.div>
+          </div>
         </div>
       </section>
 

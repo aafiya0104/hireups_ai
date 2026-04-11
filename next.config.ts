@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: path.join(__dirname),
+  experimental: {
+    // On slow filesystems (network drives / aggressive antivirus),
+    // Turbopack cache compaction can dominate route compile time.
+    turbopackFileSystemCacheForDev: false,
   },
 };
 

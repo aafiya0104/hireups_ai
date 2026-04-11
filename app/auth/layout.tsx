@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Rocket } from "lucide-react";
 
@@ -29,11 +26,7 @@ export default function AuthLayout({
               <span className="text-2xl font-heading font-extrabold tracking-tighter text-white">HireUps<span className="text-[#6666ff]">.ai</span></span>
             </Link>
             
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
+            <div>
               <h1 className="text-4xl xl:text-5xl font-heading font-bold text-white mb-6 leading-tight">
                 Empowering the Next <br />
                 Generation of <br />
@@ -42,7 +35,7 @@ export default function AuthLayout({
               <p className="text-zinc-400 font-sans text-lg max-w-md leading-relaxed">
                 Join 500+ campuses and 10k+ students already accelerating their careers with AI-powered intelligence.
               </p>
-            </motion.div>
+            </div>
           </div>
 
           <div className="space-y-6">
