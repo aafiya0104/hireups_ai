@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { cn } from "@/lib/utils";
+import { ChatbotWidget } from "@/components/ui/ChatbotWidget";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -39,6 +40,7 @@ export default function RootLayout({
         <main className="flex-grow pt-4">
           {children}
         </main>
+        <ChatbotWidget />
         <Footer />
       </body>
     </html>
