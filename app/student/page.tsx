@@ -19,8 +19,20 @@ export default function StudentDashboard() {
       {/* Header */}
       <div className="relative bg-gradient-to-r from-[#6666ff]/20 to-[#b8baff]/10 rounded-3xl p-8 border border-[#6666ff]/20 overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#6666ff] rounded-full blur-[100px] opacity-20" />
-        <h1 className="text-4xl font-heading font-bold mb-2">Welcome back, Student</h1>
-        <p className="text-gray-400 font-sans">Your placement readiness score is <span className="text-[#b9f0d7] font-bold">85%</span>. Let's hit 100%.</p>
+        <div className="relative flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <h1 className="text-4xl font-heading font-bold mb-2">Welcome back, Student</h1>
+            <p className="text-gray-400 font-sans max-w-2xl">Your placement readiness score is <span className="text-[#b9f0d7] font-bold">85%</span>. Let's hit 100%.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/student/profile" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/10 bg-white/5 text-white text-sm font-bold hover:bg-white/10 transition-all">
+              Open Profile
+            </Link>
+            <Link href="/student/profile" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#6666ff] text-white text-sm font-bold hover:bg-[#b8baff] hover:text-zinc-900 transition-all">
+              Edit Profile
+            </Link>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -59,9 +71,14 @@ export default function StudentDashboard() {
               <span className="font-bold text-white">7</span>
               <span className="text-zinc-400 text-xs">day streak</span>
             </div>
-            <Link href="/student/roadmap" className="flex items-center gap-1.5 px-4 py-2 bg-[#6666ff] text-white text-sm font-bold rounded-lg hover:bg-[#b8baff] hover:text-zinc-900 transition-all">
-              Open Roadmap <ArrowRight size={14} />
-            </Link>
+            <div className="flex gap-2">
+              <Link href="/student/profile" className="flex items-center gap-1.5 px-4 py-2 border border-white/10 text-white text-sm font-bold rounded-lg hover:bg-white/5 transition-all">
+                Profile
+              </Link>
+              <Link href="/student/roadmap" className="flex items-center gap-1.5 px-4 py-2 bg-[#6666ff] text-white text-sm font-bold rounded-lg hover:bg-[#b8baff] hover:text-zinc-900 transition-all">
+                Open Roadmap <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
         </div>
 
