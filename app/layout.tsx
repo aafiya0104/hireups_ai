@@ -3,6 +3,7 @@ import { DM_Sans, Syne, Geist } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { ChatbotWidget } from "@/components/ui/ChatbotWidget";
 
@@ -35,13 +36,19 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", dmSans.variable, syne.variable, "font-sans", geist.variable)}
     >
-      <body className="min-h-screen flex flex-col bg-rich-black text-foreground font-sans">
+      <body className="min-h-screen flex flex-col bg-rich-black text-foreground font-sans relative">
         <Navbar />
         <main className="flex-grow pt-4">
           {children}
         </main>
         <ChatbotWidget />
         <Footer />
+        <Toaster position="bottom-right" toastOptions={{
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }}/>
       </body>
     </html>
   );

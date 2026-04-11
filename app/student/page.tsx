@@ -1,5 +1,6 @@
 import { BookOpen, Code, FileText, Trophy, Target, Search, Map, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import DetailedDSATracker from "../../components/DetailedDSATracker";
 
 const DashboardCard = ({ title, icon: Icon, color, delay, children }: any) => (
   <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur">
@@ -83,45 +84,28 @@ export default function StudentDashboard() {
         </div>
 
         {/* DSA Mastery Tracker */}
-        <DashboardCard title="DSA Mastery" icon={Code} color="[#b9f0d7]" delay={0.2}>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-black/40 p-4 rounded-xl border border-[#b9f0d7]/20 text-center">
-                <div className="text-2xl font-bold text-[#b9f0d7]">124</div>
-                <div className="text-xs text-gray-400">Problems Solved</div>
-              </div>
-              <div className="bg-black/40 p-4 rounded-xl border border-[#b8baff]/20 text-center">
-                <div className="text-2xl font-bold text-[#b8baff]">Top 15%</div>
-                <div className="text-xs text-gray-400">Global Rank</div>
-              </div>
-            </div>
-            <div className="pt-2">
-              <h4 className="text-sm font-bold text-gray-300 font-sans mb-2">Weak Zones Flagged by AI</h4>
-              <div className="flex gap-2">
-                <span className="px-2 py-1 bg-red-500/10 text-red-400 text-xs rounded border border-red-500/20">Dynamic Programming</span>
-                <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded border border-orange-500/20">Graphs</span>
-              </div>
-            </div>
-            <button className="w-full py-2 border border-white/10 text-white rounded-lg text-sm font-semibold hover:bg-white/5 transition-colors">View Dependency Graph</button>
-          </div>
-        </DashboardCard>
+        <DetailedDSATracker />
 
         {/* AI Portfolio Generator */}
-        <DashboardCard title="ATS Portfolio" icon={FileText} color="[#b8baff]" delay={0.3}>
-          <div className="h-full flex flex-col justify-between space-y-4">
-            <p className="text-sm text-gray-400 font-sans">
-              Connect your GitHub and let AI generate a deployed, ATS-friendly portfolio in 60 seconds.
-            </p>
-            <div className="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                <span className="text-sm font-sans">GitHub Synced</span>
+        <Link href="/student/portfolio" className="block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b8baff]/60">
+          <DashboardCard title="ATS Portfolio" icon={FileText} color="[#b8baff]" delay={0.3}>
+            <div className="h-full flex flex-col justify-between space-y-4">
+              <p className="text-sm text-gray-400 font-sans">
+                Connect your GitHub and let AI generate a deployed, ATS-friendly portfolio in 60 seconds.
+              </p>
+              <div className="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-sm font-sans">GitHub Synced</span>
+                </div>
+                <span className="text-xs text-gray-500">Last updated: 2h ago</span>
               </div>
-              <span className="text-xs text-gray-500">Last updated: 2h ago</span>
+              <div className="w-full py-2 bg-[#b8baff] text-[#0c0c16] rounded-lg text-sm font-bold inline-flex items-center justify-center gap-2">
+                Open Portfolio Generator <ArrowRight size={14} />
+              </div>
             </div>
-            <button className="w-full py-2 bg-[#b8baff] text-[#0c0c16] rounded-lg text-sm font-bold hover:opacity-90 transition-opacity">Regenerate Portfolio</button>
-          </div>
-        </DashboardCard>
+          </DashboardCard>
+        </Link>
 
         {/* Virtual CP Arena */}
         <DashboardCard title="CP Arena" icon={Trophy} color="[#c9e8ff]" delay={0.4}>
