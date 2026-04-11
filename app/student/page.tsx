@@ -87,21 +87,25 @@ export default function StudentDashboard() {
         <DetailedDSATracker />
 
         {/* AI Portfolio Generator */}
-        <DashboardCard title="ATS Portfolio" icon={FileText} color="[#b8baff]" delay={0.3}>
-          <div className="h-full flex flex-col justify-between space-y-4">
-            <p className="text-sm text-gray-400 font-sans">
-              Connect your GitHub and let AI generate a deployed, ATS-friendly portfolio in 60 seconds.
-            </p>
-            <div className="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                <span className="text-sm font-sans">GitHub Synced</span>
+        <Link href="/student/portfolio" className="block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b8baff]/60">
+          <DashboardCard title="ATS Portfolio" icon={FileText} color="[#b8baff]" delay={0.3}>
+            <div className="h-full flex flex-col justify-between space-y-4">
+              <p className="text-sm text-gray-400 font-sans">
+                Connect your GitHub and let AI generate a deployed, ATS-friendly portfolio in 60 seconds.
+              </p>
+              <div className="bg-black/40 p-3 rounded-xl border border-white/5 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                  <span className="text-sm font-sans">GitHub Synced</span>
+                </div>
+                <span className="text-xs text-gray-500">Last updated: 2h ago</span>
               </div>
-              <span className="text-xs text-gray-500">Last updated: 2h ago</span>
+              <div className="w-full py-2 bg-[#b8baff] text-[#0c0c16] rounded-lg text-sm font-bold inline-flex items-center justify-center gap-2">
+                Open Portfolio Generator <ArrowRight size={14} />
+              </div>
             </div>
-            <button className="w-full py-2 bg-[#b8baff] text-[#0c0c16] rounded-lg text-sm font-bold hover:opacity-90 transition-opacity">Regenerate Portfolio</button>
-          </div>
-        </DashboardCard>
+          </DashboardCard>
+        </Link>
 
         {/* Virtual CP Arena */}
         <DashboardCard title="CP Arena" icon={Trophy} color="[#c9e8ff]" delay={0.4}>
