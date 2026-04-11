@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Filter, Users, MessageSquare, Calendar, Building, ChevronRight, Check } from "lucide-react";
 
 export default function RecruiterDashboard() {
@@ -8,11 +5,7 @@ export default function RecruiterDashboard() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col h-[calc(100vh-100px)]">
       
       {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex justify-between items-center bg-[#0c0c16] pb-6 border-b border-white/5 shrink-0"
-      >
+      <div className="flex justify-between items-center bg-[#0c0c16] pb-6 border-b border-white/5 shrink-0">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-[#b8baff]/20 rounded-xl flex items-center justify-center border border-[#b8baff]/30">
             <Building className="text-[#b8baff]" size={24} />
@@ -25,18 +18,13 @@ export default function RecruiterDashboard() {
         <div>
           <button className="px-4 py-2 bg-[#b8baff] text-[#0c0c16] font-bold rounded-lg hover:bg-[#c9e8ff] transition-colors">Post New JD</button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Main Layout */}
       <div className="flex flex-1 gap-6 pt-6 min-h-0">
         
         {/* Sidebar: AI Curated Shortlists */}
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.1 }}
-          className="w-1/3 bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-4 backdrop-blur flex flex-col"
-        >
+        <div className="w-1/3 bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-4 backdrop-blur flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-heading font-bold flex items-center gap-2">
                <Users size={18} className="text-[#b9f0d7]" /> AI Shortlists
@@ -63,15 +51,10 @@ export default function RecruiterDashboard() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Detail View: Candidate Profile & Engagement */}
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex-1 bg-[#0c0c16]/50 border border-white/5 rounded-2xl flex flex-col backdrop-blur overflow-hidden"
-        >
+        <div className="flex-1 bg-[#0c0c16]/50 border border-white/5 rounded-2xl flex flex-col backdrop-blur overflow-hidden">
           {/* Profile Header */}
           <div className="p-6 border-b border-white/5 flex justify-between items-start bg-gradient-to-r from-black/20 to-transparent">
             <div>
@@ -145,7 +128,7 @@ export default function RecruiterDashboard() {
             </div>
 
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </div>
