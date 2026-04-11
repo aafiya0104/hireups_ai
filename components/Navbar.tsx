@@ -23,7 +23,7 @@ export function Navbar() {
           <div className="hidden md:flex space-x-8 items-center font-sans text-sm font-medium text-[#ededed]">
             <Link href="/student" className="hover:text-[#b9f0d7] transition-colors">Students</Link>
             <Link href="/tpo/dashboard" className="hover:text-[#c9e8ff] transition-colors">TPO Dashboard</Link>
-            <Link href="/recruiter" className="hover:text-[#b8baff] transition-colors">Recruiters</Link>
+            <Link href="/recruiter/dashboard" className="hover:text-[#b8baff] transition-colors">Recruiters</Link>
             <Link href="/alumni" className="hover:text-[#6666ff] transition-colors">Alumni</Link>
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-white/10">
               <Link href="/auth/login" className="hover:text-[#6666ff] transition-colors">
@@ -54,7 +54,7 @@ export function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col font-sans">
             <Link href="/student" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#b9f0d7]">Students</Link>
             <Link href="/tpo/dashboard" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#c9e8ff]">TPOs</Link>
-            <Link href="/recruiter" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#b8baff]">Recruiters</Link>
+            <Link href="/recruiter/dashboard" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#b8baff]">Recruiters</Link>
             <Link href="/alumni" className="block px-3 py-2 text-base font-medium text-[#ededed] hover:text-[#6666ff]">Alumni</Link>
             <div className="pt-4 space-y-2 border-t border-white/10 mt-2">
               <Link href="/auth/login" className="block px-3 py-3 rounded-xl text-center font-bold text-[#ededed] border border-white/10 hover:bg-white/5 transition-all">
