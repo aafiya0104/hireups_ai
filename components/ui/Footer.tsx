@@ -19,7 +19,7 @@ export function Footer() {
             <h3 className="text-lg font-heading font-semibold text-[#b9f0d7] mb-4">Platform</h3>
             <ul className="space-y-2 text-sm font-sans">
               <li><Link href="/student" className="hover:text-[#6666ff] transition-colors">Student Hub</Link></li>
-              <li><Link href="/tpo" className="hover:text-[#6666ff] transition-colors">TPO Portal</Link></li>
+              <li><Link href="/tpo/dashboard" className="hover:text-[#6666ff] transition-colors">TPO Portal</Link></li>
               <li><Link href="/recruiter" className="hover:text-[#6666ff] transition-colors">Recruiter Suite</Link></li>
               <li><Link href="/alumni" className="hover:text-[#6666ff] transition-colors">Alumni Network</Link></li>
             </ul>
