@@ -51,7 +51,7 @@ export default function Home() {
             <Link href="/student" className="px-8 py-4 rounded-xl bg-zinc-100 text-zinc-900 font-bold font-sans hover:bg-white hover:scale-105 transition-all shadow-lg">
               Get Started for Students
             </Link>
-            <Link href="/tpo" className="px-8 py-4 rounded-xl border border-white/10 text-zinc-300 font-bold font-sans hover:bg-white/5 hover:text-white transition-all backdrop-blur-sm">
+            <Link href="/tpo/dashboard" className="px-8 py-4 rounded-xl border border-white/10 text-zinc-300 font-bold font-sans hover:bg-white/5 hover:text-white transition-all backdrop-blur-sm">
               Explore TPO Tools
             </Link>
           </div>
@@ -82,7 +82,7 @@ export default function Home() {
             icon={LayoutDashboard}
             colorClass="text-[#b9f0d7]"
             glowColor="bg-[#b9f0d7]"
-            link="/tpo"
+            link="/tpo/dashboard"
           />
           <FeatureCard 
             title="Recruiter Suite"
