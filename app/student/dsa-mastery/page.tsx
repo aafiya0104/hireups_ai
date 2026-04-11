@@ -9,6 +9,7 @@ import SkillRadarChart from "../../../components/SkillRadarChart";
 import DailyBountiesCard from "../../../components/DailyBountiesCard";
 import LeaderboardPodium from "../../../components/LeaderboardPodium";
 import AIMockInterviewCard from "../../../components/AIMockInterviewCard";
+import CodingIDEModal from "../../../components/CodingIDEModal";
 
 const topicIcons: Record<string, any> = {
   "Arrays": Database,
@@ -75,6 +76,10 @@ const getDifficultyPoints = (difficulty: Difficulty) => {
 export default function DSAMasteryPage() {
   const [problems, setProblems] = useState<Problem[]>(initialDummyProblems);
   const [activeTopicId, setActiveTopicId] = useState<string | null>(null);
+  const [activeProblemId, setActiveProblemId] = useState<string | null>(null);
+
+  const activeProblem = activeProblemId ? problems.find(p => p.id === activeProblemId) ?? null : null;
+  const activeTopicName = activeTopicId ? (topics.find(t => t.id === activeTopicId)?.name ?? "") : "";
 
   const topicStats = useMemo(() => {
     return topics.map((topic) => {
@@ -303,17 +308,30 @@ export default function DSAMasteryPage() {
               
               <div className="space-y-4 mb-8 max-h-[40vh] overflow-y-auto custom-scrollbar pr-2">
                 {problems.filter(p => p.topicId === activeTopicId).map((prob, idx) => (
-                  <div key={prob.id} className="p-4 rounded-xl border border-white/5 bg-white/5 flex items-center justify-between transition-colors hover:bg-white/10">
+                  <motion.div
+                    key={prob.id}
+                    whileHover={!prob.solved ? { scale: 1.01, x: 4 } : {}}
+                    onClick={() => { if (!prob.solved) { setActiveProblemId(prob.id); } }}
+                    className={`p-4 rounded-xl border border-white/5 bg-white/5 flex items-center justify-between transition-colors ${
+                      prob.solved ? "opacity-60 cursor-default" : "hover:bg-white/10 hover:border-[#6666ff]/30 cursor-pointer"
+                    }`}
+                  >
                      <div className="flex items-center gap-3">
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${prob.solved ? 'bg-[#b9f0d7]/20 text-[#b9f0d7]' : 'bg-white/10 text-gray-400'}`}>
                            {prob.solved ? <CheckCircle2 size={16} /> : idx + 1}
                         </div>
-                        <span className={`font-sans font-bold ${prob.solved ? 'text-gray-500 line-through' : 'text-white'}`}>Algorithm Challenge {prob.id.replace('p', '')}</span>
+                        <div>
+                          <span className={`font-sans font-bold block ${prob.solved ? 'text-gray-500 line-through' : 'text-white'}`}>Algorithm Challenge {prob.id.replace('p', '')}</span>
+                          {!prob.solved && <span className="text-[10px] text-[#6666ff] font-sans">Click to solve in IDE →</span>}
+                        </div>
                      </div>
-                     <span className={`text-xs font-bold px-2 py-1 rounded-md ${prob.difficulty === 'Hard' ? 'bg-red-500/20 text-red-400' : prob.difficulty === 'Medium' ? 'bg-orange-500/20 text-orange-400' : 'bg-green-500/20 text-green-400'}`}>
-                       {prob.difficulty}
-                     </span>
-                  </div>
+                     <div className="flex items-center gap-2">
+                       <span className={`text-xs font-bold px-2 py-1 rounded-md ${prob.difficulty === 'Hard' ? 'bg-red-500/20 text-red-400' : prob.difficulty === 'Medium' ? 'bg-orange-500/20 text-orange-400' : 'bg-green-500/20 text-green-400'}`}>
+                         {prob.difficulty}
+                       </span>
+                       {!prob.solved && <Code size={14} className="text-[#6666ff] opacity-60" />}
+                     </div>
+                  </motion.div>
                 ))}
               </div>
 
@@ -339,6 +357,19 @@ export default function DSAMasteryPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* IDE Modal — opens over the topic modal */}
+      {activeProblemId && activeProblem && (
+        <CodingIDEModal
+          problem={activeProblem}
+          topicName={activeTopicName}
+          onClose={() => setActiveProblemId(null)}
+          onSolve={(problemId) => {
+            setProblems(prev => prev.map(p => p.id === problemId ? { ...p, solved: true } : p));
+            setActiveProblemId(null);
+          }}
+        />
+      )}
     </div>
   );
 }
