@@ -84,10 +84,12 @@ function normalizeCompanyRecord(company: CompanyInput, role = ""): CompanyRecord
   };
 }
 
-function docToPlain<T extends { _id?: { toString(): string } }>(doc: T) {
+function docToPlain(doc: any) {
+  const id = doc?._id != null ? String(doc._id) : randomUUID();
+
   return {
     ...doc,
-    id: doc._id?.toString() ?? randomUUID(),
+    id,
   };
 }
 
