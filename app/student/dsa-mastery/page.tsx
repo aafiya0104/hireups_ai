@@ -32,28 +32,35 @@ interface Topic {
   id: string;
   name: string;
   prereqs: string[];
+  level: number;
 }
 
 const initialDummyProblems: Problem[] = [
   { id: "p1", topicId: "Arrays", difficulty: "Easy", solved: true },
-  { id: "p2", topicId: "Arrays", difficulty: "Easy", solved: true },
-  { id: "p3", topicId: "Arrays", difficulty: "Medium", solved: true },
-  { id: "p4", topicId: "Arrays", difficulty: "Hard", solved: true },
-  { id: "p5", topicId: "TwoPointers", difficulty: "Easy", solved: true },
-  { id: "p6", topicId: "TwoPointers", difficulty: "Medium", solved: false },
-  { id: "p7", topicId: "FastSlowPointers", difficulty: "Easy", solved: false },
-  { id: "p8", topicId: "SlidingWindow", difficulty: "Medium", solved: false },
-  { id: "p9", topicId: "Trees", difficulty: "Medium", solved: true },
+  { id: "p2", topicId: "Arrays", difficulty: "Medium", solved: true },
+  
+  { id: "p3", topicId: "TwoPointers", difficulty: "Medium", solved: false },
+  { id: "p4", topicId: "TwoPointers", difficulty: "Hard", solved: false },
+  
+  { id: "p5", topicId: "SlidingWindow", difficulty: "Easy", solved: false },
+  { id: "p6", topicId: "SlidingWindow", difficulty: "Medium", solved: false },
+  
+  { id: "p7", topicId: "DP", difficulty: "Hard", solved: false },
+  { id: "p8", topicId: "DP", difficulty: "Medium", solved: false },
+  
+  { id: "p9", topicId: "FastSlowPointers", difficulty: "Hard", solved: false },
+  
   { id: "p10", topicId: "Trees", difficulty: "Hard", solved: false },
+  { id: "p11", topicId: "Trees", difficulty: "Medium", solved: false },
 ];
 
 const topics: Topic[] = [
-  { id: "Arrays", name: "Arrays & Hashing", prereqs: [] },
-  { id: "TwoPointers", name: "Two Pointers", prereqs: ["Arrays"] },
-  { id: "FastSlowPointers", name: "Fast & Slow Pointers", prereqs: ["TwoPointers"] },
-  { id: "SlidingWindow", name: "Sliding Window", prereqs: ["TwoPointers"] },
-  { id: "Trees", name: "Trees & Graphs", prereqs: [] },
-  { id: "DP", name: "Dynamic Programming", prereqs: ["Trees"] }, // just for graph complexity
+  { id: "Arrays", name: "Arrays & Hashing", prereqs: [], level: 1 },
+  { id: "TwoPointers", name: "Two Pointers", prereqs: ["Arrays"], level: 2 },
+  { id: "SlidingWindow", name: "Sliding Window", prereqs: ["Arrays"], level: 2 },
+  { id: "DP", name: "Dynamic Programming", prereqs: ["TwoPointers"], level: 3 },
+  { id: "FastSlowPointers", name: "Fast & Slow", prereqs: ["SlidingWindow"], level: 3 },
+  { id: "Trees", name: "Trees & Graphs", prereqs: ["DP", "FastSlowPointers"], level: 4 },
 ];
 
 const getDifficultyPoints = (difficulty: Difficulty) => {
@@ -217,26 +224,19 @@ export default function DSAMasteryPage() {
            <div className="relative max-w-5xl w-full flex-1 flex flex-col justify-center">
              <div className="flex flex-col gap-16 sm:gap-24 items-center">
                 
-                {/* Level 1: Foundations */}
-                <div className="flex flex-wrap justify-center gap-8 relative z-10">
-                   {topicStats.filter(t => t.prereqs.length === 0).map(topic => (
-                     <div key={topic.id} className="relative group">{renderNode(topic)}</div>
-                   ))}
-                </div>
-
-                {/* Level 2 */}
-                <div className="flex flex-wrap justify-center gap-8 relative z-10">
-                   {topicStats.filter(t => t.prereqs.length === 1 && (t.prereqs[0] === 'Arrays' || t.prereqs[0] === 'Trees')).map(topic => (
-                     <div key={topic.id} className="relative group">{renderNode(topic)}</div>
-                   ))}
-                </div>
-
-                {/* Level 3 */}
-                <div className="flex flex-wrap justify-center gap-8 relative z-10">
-                   {topicStats.filter(t => t.prereqs.length === 1 && (t.prereqs[0] === 'TwoPointers')).map(topic => (
-                     <div key={topic.id} className="relative group">{renderNode(topic)}</div>
-                   ))}
-                </div>
+                {[1, 2, 3, 4, 5].map(level => {
+                  const levelTopics = topicStats.filter(t => t.level === level);
+                  if (levelTopics.length === 0) return null;
+                  return (
+                    <div key={`level-${level}`} className="flex flex-wrap justify-center gap-8 relative z-10 w-full">
+                      {levelTopics.map(topic => (
+                         <div key={topic.id} className="relative group flex justify-center">
+                            {renderNode(topic)}
+                         </div>
+                      ))}
+                    </div>
+                  );
+                })}
 
              </div>
 
