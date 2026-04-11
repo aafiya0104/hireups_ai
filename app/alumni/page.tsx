@@ -1,17 +1,10 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { History, HeartHandshake, CheckCircle, BellRing } from "lucide-react";
 
 export default function AlumniDashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#c9e8ff]/20 to-transparent border border-[#c9e8ff]/20 rounded-3xl p-12 overflow-hidden relative"
-      >
+      <div className="flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#c9e8ff]/20 to-transparent border border-[#c9e8ff]/20 rounded-3xl p-12 overflow-hidden relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#c9e8ff] rounded-full blur-[120px] opacity-10" />
         <div className="z-10 relative">
           <h1 className="text-4xl font-heading font-bold mb-4">Give Back to Your Alma Mater</h1>
@@ -24,17 +17,12 @@ export default function AlumniDashboard() {
              </button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* Previous Drives Archive */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur space-y-6"
-        >
+        <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur space-y-6">
           <div className="flex items-center gap-3 border-b border-white/5 pb-4 mb-4">
             <div className="p-3 rounded-lg bg-[#b8baff]/10 text-[#b8baff]">
               <History size={24} />
@@ -61,15 +49,10 @@ export default function AlumniDashboard() {
             </button>
           </div>
 
-        </motion.div>
+        </div>
 
         {/* Mentorship & Mock Interviews */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur flex flex-col justify-between"
-        >
+        <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-3 border-b border-white/5 pb-4 mb-4">
               <div className="p-3 rounded-lg bg-[#6666ff]/10 text-[#6666ff]">
@@ -105,7 +88,7 @@ export default function AlumniDashboard() {
              <span className="text-xs text-gray-400">Top 10% Alumni Mentor</span>
           </div>
 
-        </motion.div>
+        </div>
 
       </div>
     </div>

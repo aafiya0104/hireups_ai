@@ -1,17 +1,10 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Search, MapPin, Send, BarChart3, Database, TrendingUp, Users } from "lucide-react";
 
 export default function TPODashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-[#0c0c16] border-b border-white/5 pb-8"
-      >
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-[#0c0c16] border-b border-white/5 pb-8">
         <div>
           <h1 className="text-4xl font-heading font-bold mb-2">Placement Command Center</h1>
           <p className="text-gray-400 font-sans">Live analytics, recruiter discovery, and automated outreach pipeline.</p>
@@ -20,15 +13,10 @@ export default function TPODashboard() {
           <button className="px-4 py-2 bg-[#b9f0d7]/10 text-[#b9f0d7] font-semibold border border-[#b9f0d7]/20 rounded-lg hover:bg-[#b9f0d7]/20 transition-all">Export Report</button>
           <button className="px-4 py-2 bg-[#6666ff] text-white font-semibold rounded-lg hover:bg-[#b8baff] hover:text-[#0c0c16] transition-all">New Campaign</button>
         </div>
-      </motion.div>
+      </div>
 
       {/* KPI Tiles */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.1 }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-4"
-      >
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           { label: "Total Offers", value: "342", trend: "+12%", color: "text-[#b9f0d7]", bg: "bg-[#b9f0d7]/10", border: "border-[#b9f0d7]/20" },
           { label: "Avg CTC", value: "₹8.4 LPA", trend: "+5%", color: "text-[#c9e8ff]", bg: "bg-[#c9e8ff]/10", border: "border-[#c9e8ff]/20" },
@@ -43,7 +31,7 @@ export default function TPODashboard() {
             </div>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
@@ -51,12 +39,7 @@ export default function TPODashboard() {
         <div className="lg:col-span-2 space-y-8">
           
           {/* AI Recruiter Discovery */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur"
-          >
+          <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-heading font-bold flex items-center gap-2">
                 <Search className="text-[#b8baff]" /> AI Recruiter Discovery
@@ -91,15 +74,10 @@ export default function TPODashboard() {
                 </tbody>
               </table>
             </div>
-          </motion.div>
+          </div>
 
           {/* AI Outreach */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur"
-          >
+          <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-xl font-heading font-bold flex items-center gap-2">
                 <Send className="text-[#6666ff]" /> AI Outreach Campaigns
@@ -118,7 +96,7 @@ export default function TPODashboard() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
 
@@ -126,12 +104,7 @@ export default function TPODashboard() {
         <div className="space-y-8">
           
           {/* Alumni Radar */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur"
-          >
+          <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur">
             <h2 className="text-xl font-heading font-bold flex items-center gap-2 mb-6">
               <MapPin className="text-[#c9e8ff]" /> Alumni Radar
             </h2>
@@ -148,15 +121,10 @@ export default function TPODashboard() {
               ))}
               <button className="w-full py-2 border border-white/10 text-white rounded-lg text-sm hover:bg-white/5 transition-colors mt-2">View Full Graph</button>
             </div>
-          </motion.div>
+          </div>
 
           {/* Past Drives Archive */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur"
-          >
+          <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur">
             <h2 className="text-xl font-heading font-bold flex items-center gap-2 mb-6">
               <Database className="text-[#b8baff]" /> Drive Archive
             </h2>
@@ -164,7 +132,7 @@ export default function TPODashboard() {
               Benchmark current batch against historical data.
             </p>
             <button className="w-full py-2 bg-[#b8baff]/10 text-[#b8baff] border border-[#b8baff]/20 rounded-lg text-sm font-semibold hover:bg-[#b8baff]/20 transition-colors">Compare 2024 vs 2025</button>
-          </motion.div>
+            </div>
 
         </div>
 
