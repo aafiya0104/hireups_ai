@@ -3,6 +3,7 @@ import { DM_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { Toaster } from "react-hot-toast";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -31,12 +32,18 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans">
+      <body className="min-h-screen flex flex-col bg-background text-foreground font-sans relative">
         <Navbar />
         <main className="flex-grow pt-4">
           {children}
         </main>
         <Footer />
+        <Toaster position="bottom-right" toastOptions={{
+          style: {
+            background: '#333',
+            color: '#fff',
+          },
+        }}/>
       </body>
     </html>
   );

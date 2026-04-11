@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { BookOpen, Code, FileText, Trophy, Target, Search, Map, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import DetailedDSATracker from "../../components/DetailedDSATracker";
 
 const DashboardCard = ({ title, icon: Icon, color, delay, children }: any) => (
   <motion.div
@@ -83,28 +84,7 @@ export default function StudentDashboard() {
         </motion.div>
 
         {/* DSA Mastery Tracker */}
-        <DashboardCard title="DSA Mastery" icon={Code} color="[#b9f0d7]" delay={0.2}>
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-black/40 p-4 rounded-xl border border-[#b9f0d7]/20 text-center">
-                <div className="text-2xl font-bold text-[#b9f0d7]">124</div>
-                <div className="text-xs text-gray-400">Problems Solved</div>
-              </div>
-              <div className="bg-black/40 p-4 rounded-xl border border-[#b8baff]/20 text-center">
-                <div className="text-2xl font-bold text-[#b8baff]">Top 15%</div>
-                <div className="text-xs text-gray-400">Global Rank</div>
-              </div>
-            </div>
-            <div className="pt-2">
-              <h4 className="text-sm font-bold text-gray-300 font-sans mb-2">Weak Zones Flagged by AI</h4>
-              <div className="flex gap-2">
-                <span className="px-2 py-1 bg-red-500/10 text-red-400 text-xs rounded border border-red-500/20">Dynamic Programming</span>
-                <span className="px-2 py-1 bg-orange-500/10 text-orange-400 text-xs rounded border border-orange-500/20">Graphs</span>
-              </div>
-            </div>
-            <button className="w-full py-2 border border-white/10 text-white rounded-lg text-sm font-semibold hover:bg-white/5 transition-colors">View Dependency Graph</button>
-          </div>
-        </DashboardCard>
+        <DetailedDSATracker />
 
         {/* AI Portfolio Generator */}
         <DashboardCard title="ATS Portfolio" icon={FileText} color="[#b8baff]" delay={0.3}>
