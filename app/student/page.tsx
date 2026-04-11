@@ -1,16 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { BookOpen, Code, FileText, Trophy, Target, Search, Map, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const DashboardCard = ({ title, icon: Icon, color, delay, children }: any) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay }}
-    className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur"
-  >
+  <div className="bg-[#0c0c16]/50 border border-white/5 rounded-2xl p-6 backdrop-blur">
     <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
       <div className={`p-3 rounded-lg bg-${color}/10 text-${color}`}>
         <Icon size={24} />
@@ -18,32 +10,23 @@ const DashboardCard = ({ title, icon: Icon, color, delay, children }: any) => (
       <h2 className="text-xl font-heading font-bold">{title}</h2>
     </div>
     {children}
-  </motion.div>
+  </div>
 );
 
 export default function StudentDashboard() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="relative bg-gradient-to-r from-[#6666ff]/20 to-[#b8baff]/10 rounded-3xl p-8 border border-[#6666ff]/20 overflow-hidden"
-      >
+      <div className="relative bg-gradient-to-r from-[#6666ff]/20 to-[#b8baff]/10 rounded-3xl p-8 border border-[#6666ff]/20 overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#6666ff] rounded-full blur-[100px] opacity-20" />
         <h1 className="text-4xl font-heading font-bold mb-2">Welcome back, Student</h1>
         <p className="text-gray-400 font-sans">Your placement readiness score is <span className="text-[#b9f0d7] font-bold">85%</span>. Let's hit 100%.</p>
-      </motion.div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         
         {/* AI Learning Roadmap — full feature entry */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-gradient-to-br from-[#6666ff]/10 to-[#b8baff]/5 border border-[#6666ff]/20 rounded-2xl p-6 relative overflow-hidden"
-        >
+        <div className="bg-gradient-to-br from-[#6666ff]/10 to-[#b8baff]/5 border border-[#6666ff]/20 rounded-2xl p-6 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-40 h-40 bg-[#6666ff] rounded-full blur-[80px] opacity-10 pointer-events-none" />
           <div className="flex items-center gap-3 mb-4">
             <div className="p-3 rounded-lg bg-[#6666ff]/10 text-[#6666ff]">
@@ -80,7 +63,7 @@ export default function StudentDashboard() {
               Open Roadmap <ArrowRight size={14} />
             </Link>
           </div>
-        </motion.div>
+        </div>
 
         {/* DSA Mastery Tracker */}
         <DashboardCard title="DSA Mastery" icon={Code} color="[#b9f0d7]" delay={0.2}>

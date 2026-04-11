@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col bg-[var(--color-rich-black)] text-[var(--color-foreground)] font-sans">
+      <body className="min-h-screen flex flex-col bg-rich-black text-foreground font-sans">
         <Navbar />
         <main className="flex-grow pt-4">
           {children}
